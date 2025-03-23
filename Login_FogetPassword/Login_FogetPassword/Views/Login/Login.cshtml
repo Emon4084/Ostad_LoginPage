@@ -1,0 +1,92 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Login</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .login-container {
+            background-color: white;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 450px;
+        }
+
+            .login-container h2 {
+                margin-bottom: 20px;
+            }
+
+            .login-container input[type="text"],
+            .login-container input[type="password"] {
+                width: 100%;
+                padding: 10px;
+                margin: 10px 0;
+                border: 1px solid #ccc;
+                border-radius: 5px;
+            }
+
+            .login-container input[type="submit"] {
+                width: 100%;
+                padding: 10px;
+                background-color: #4CAF50;
+                color: white;
+                border: none;
+                border-radius: 5px;
+                cursor: pointer;
+            }
+
+                .login-container input[type="submit"]:hover {
+                    background-color: #45a049;
+                }
+
+        .error-message {
+            color: red;
+            margin-bottom: 10px;
+        }
+    </style>
+    @*@{
+                string sessionName = "";
+                if (Session["UserName"] != null)
+                {
+                    sessionName = Session["UserName"].ToString();
+                }
+            }
+
+        <script>
+                var userName = @sessionName;
+                if (userName != "") {
+                    window.location.href = "@Url.Action("About", "Home")";
+                }
+        </script>*@
+</head>
+<body>
+    <div class="login-container">
+        @if (TempData["Error"] != null)
+        {
+            <div class="error-message">@TempData["Error"]</div>
+        }
+        <h2>Login</h2>
+        <form method="post" action="@Url.Action("Login","Login")">
+            <input type="text" name="username" placeholder="Default Username is 12345" required />
+            <input type="password" name="password" placeholder="Default Password is 12345" required />
+            <input type="submit" value="Login" />
+
+            <p><a href="@Url.Action("ForgetPassword", "Login")">Forget Password</a></p>
+        </form>
+    </div>
+</body>
+</html>
