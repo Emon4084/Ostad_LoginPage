@@ -7,19 +7,19 @@
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
 
-    @{
+    @*@{
         string sessionName = "";
         if (Session["UserName"] != null)
         {
             sessionName = Session["UserName"].ToString();
         }
-    }
+    }*@
 
 <script>
-                var userName = '@sessionName';
+                @*var userName = '@sessionName';
                 if (userName == '') {
                     window.location.href = "@Url.Action("Login", "Login")";
-                }
+                }*@
 </script>
 </head>
 <body>
